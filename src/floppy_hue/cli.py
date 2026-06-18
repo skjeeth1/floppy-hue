@@ -12,7 +12,6 @@ import sys
 import importlib.resources
 from pathlib import Path
 
-# Python 3.11+ has built-in TOML support. 
 try:
     import tomllib
 except ImportError:
@@ -25,7 +24,7 @@ from floppy_hue.core import (
     score_weighted,
     score_structural,
     visualize_palette,
-    visualize_3d_clusters
+    visualize_3d_clusters,
 )
 
 
@@ -91,32 +90,28 @@ def build_parser():
         "If omitted, uses the built-in theme set.",
     )
 
-    # --- Strategy Flag ---
     parser.add_argument(
-        "--strategy", 
-        choices=["base", "weighted", "structural"], 
+        "--strategy",
+        choices=["base", "weighted", "structural"],
         default="structural",
-        help="Scoring math to use (default: structural)"
+        help="Scoring math to use (default: structural)",
     )
 
-    # --- Visualization Flags ---
     parser.add_argument(
-        "--show-palette", 
-        action="store_true", 
-        help="Show 2D color bar of extracted palette"
+        "--show-palette",
+        action="store_true",
+        help="Show 2D color bar of extracted palette",
     )
-    
+
     parser.add_argument(
-        "--show-3d", 
-        action="store_true", 
-        help="Show 3D Oklab point cloud"
+        "--show-3d", action="store_true", help="Show 3D Oklab point cloud"
     )
-    
+
     parser.add_argument(
-        "--manual-theme", 
-        type=str, 
-        default=None, 
-        help="Force a specific theme to render in 3D (e.g., 'nord')"
+        "--manual-theme",
+        type=str,
+        default=None,
+        help="Force a specific theme to render in 3D (e.g., 'nord')",
     )
 
     return parser
@@ -133,59 +128,55 @@ def main():
 
     themes = load_themes(args.themes_file)
 
-    # Map the string argument to the actual function
     strategy_map = {
         "base": score_base,
         "weighted": score_weighted,
-        "structural": score_structural
+        "structural": score_structural,
     }
     scoring_function = strategy_map[args.strategy]
 
     try:
-        # 1. Load and process image ONCE
         print(f"Analyzing {image_path.name}...")
         raw_pixels, oklab_pixels = load_image_sample(str(image_path))
-        centers_oklab, weights = extract_image_colors(oklab_pixels, n_colors=args.colors)
+        centers_oklab, weights = extract_image_colors(
+            oklab_pixels, n_colors=args.colors
+        )
 
-        # 2. Score Themes against the selected strategy
         results = []
         for name, theme in themes.items():
             score = scoring_function(centers_oklab, weights, theme)
             results.append({"theme": name, "score": score})
 
-        # Sort by lowest score (best match)
         results.sort(key=lambda x: x["score"])
 
     except Exception as e:
         print(f"error: failed to process image: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # 3. Filter top N matches
     if args.top is not None:
         results = results[: args.top]
 
-    # 4. Output Results
     print(f"\nTop Matches (Strategy: {args.strategy}):")
     print("-" * 40)
     name_width = max(len(res["theme"]) for res in results) if results else 0
-    
+
     for res in results:
         print(f"{res['theme'].ljust(name_width)} | Score: {res['score']:6.2f}")
 
-    # 5. Handle Visualizations
     if args.show_palette:
         visualize_palette(centers_oklab, weights)
-        
+
     if args.show_3d:
         visualize_3d_clusters(
             raw_pixels=raw_pixels,
-            centers_oklab=centers_oklab, 
-            weights=weights, 
-            themes=themes, 
-            matches=results, 
-            top_k=len(results), 
-            manual_theme=args.manual_theme
+            centers_oklab=centers_oklab,
+            weights=weights,
+            themes=themes,
+            matches=results,
+            top_k=len(results),
+            manual_theme=args.manual_theme,
         )
+
 
 if __name__ == "__main__":
     main()
