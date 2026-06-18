@@ -1,0 +1,95 @@
+[gruvbox]
+background = "#282828"
+foreground = "#ebdbb2"
+accents = [
+    "#cc241d", "#98971a", "#d79921", "#458588",
+    "#b16286", "#689d6a", "#d65d0e", "#a89984"
+]
+
+[tokyonight]
+background = "#1a1b26"
+foreground = "#c0caf5"
+accents = [
+    "#f7768e", "#9ece6a", "#e0af68", "#7aa2f7",
+    "#bb9af7", "#7dcfff", "#ff9e64", "#73daca"
+]
+
+[dracula]
+background = "#282a36"
+foreground = "#f8f8f2"
+accents = [
+    "#ff5555", "#50fa7b", "#f1fa8c", "#bd93f9",
+    "#ff79c6", "#8be9fd", "#ffb86c", "#6272a4"
+]
+
+[nord]
+background = "#2e3440"
+foreground = "#d8dee9"
+accents = [
+    "#bf616a", "#a3be8c", "#ebcb8b", "#5e81ac",
+    "#b48ead", "#88c0d0", "#d08770", "#81a1c1"
+]
+
+[catppuccin-mocha]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+accents = [
+    "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa",
+    "#f5c2e7", "#94e2d5", "#fab387", "#cba6f7"
+]
+
+[everforest-dark]
+background = "#2d353b"
+foreground = "#d3c6aa"
+accents = [
+    "#e67e80", "#a7c080", "#dbbc7f", "#7fbbb3",
+    "#d699b6", "#83c092", "#e69875", "#9da9a0"
+]
+
+[kanagawa]
+background = "#1f1f28"
+foreground = "#dcd7ba"
+accents = [
+    "#c34043", "#76946a", "#c0a36e", "#7e9cd8",
+    "#957fb8", "#6a9589", "#ffa066", "#717c7c"
+]
+
+[monokai-pro]
+background = "#2d2a2e"
+foreground = "#fcfcfa"
+accents = [
+    "#ff6188", "#a9dc76", "#ffd866", "#fc9867",
+    "#ab9df2", "#78dce8", "#939293", "#727072"
+]
+
+[solarized-dark]
+background = "#002b36"
+foreground = "#839496"
+accents = [
+    "#dc322f", "#859900", "#b58900", "#268bd2",
+    "#d33682", "#2aa198", "#cb4b16", "#93a1a1"
+]
+
+[rose-pine]
+background = "#191724"
+foreground = "#e0def4"
+accents = [
+    "#eb6f92", "#31748f", "#f6c177", "#9ccfd8",
+    "#c4a7e7", "#ebbcba", "#908caa", "#3e8fb0"
+]
+
+[ayu-dark]
+background = "#0a0e14"
+foreground = "#b3b1ad"
+accents = [
+    "#f07178", "#c2d94c", "#ffb454", "#59c2ff",
+    "#d2a6ff", "#95e6cb", "#ff8f40", "#e6b673"
+]
+
+[one-dark]
+background = "#282c34"
+foreground = "#abb2bf"
+accents = [
+    "#e06c75", "#98c379", "#e5c07b", "#61afef",
+    "#c678dd", "#56b6c2", "#d19a66", "#5c6370"
+]
