@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "floppy-hue"
-version = "0.2.0"
+version = "0.2.1"
 description = "A CLI tool to match images against standard color palettes."
 requires-python = ">=3.8"
 dependencies = [
@@ -13,6 +13,7 @@ dependencies = [
     "scikit-image",
     "scikit-learn",
     "tomli; python_version < '3.11'",
+    "matplotlib",
 ]
 
 [project.scripts]
