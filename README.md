@@ -1,4 +1,4 @@
-# Floppy-Hue: Usage Guide
+# Floppy-Hue
 
 This is a hobby project I built to help to change colorschemes based on a wallpaper. Instead of generating color palettes, this project ranks many popular colorschemes against an image, helping you chose the best colorscheme according to your wallpaper.
 
